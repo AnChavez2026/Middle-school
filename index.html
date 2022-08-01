@@ -4,26 +4,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Number Guessing Game</title> 
-  <link 
-    rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"/>
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 
 <body>
-  <section class = "hero is-small is-link has-text-centered">
-    <div class = "hero-body">
-      <p class = "title">Number Guessing Game</p>
-      
+  <section class="hero is-small is-link has-text-centered">
+    <div class="hero-body">
+      <p class="title">Number Guessing Game</p>
     </div>
-    
   </section>
+
+  <div class="container">
+    <section class="section">
+      <h1 class="title"> Try to guess a number between 1-100</h1>
+      <h2 class="subtitle">
+        Note: You only get 10 guesses!
+      </h2>
+      <h2 id="num">
+        Attempts remaining: 10
+      </h2>
+
+    </section>
+  </div>
   
-  
-  
-  <script src="script.js"></script>
-  <script src="https://replit.com/public/js/replit-badge.js" defer></script> 
+  <input id="guess" class="input is-primary is-medium" type="text" name="number" placeholder="Make a guess" />
+  <div class="mt-4">
+    </section>
+
+    <button id="button" class="button is-medium">
+      Submit
+    </button>
+    <p id="lowHi"></p>
+
+    <section class="section">
+      <h1 class="title">Past Guesses</h1>
+      <h2 class="subtitle">Your previous guesses are shown below </h2>
+      <div>
+    <p class="attempt"></p>
+    <p class="result"></p>
+  </div>
+    </section>
+    
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://replit.com/public/js/replit-badge.js" defer></script>
 </body>
 
 </html>
