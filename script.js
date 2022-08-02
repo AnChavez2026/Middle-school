@@ -36,7 +36,7 @@ function showGuess(guess) {
   console.log(guesses);
   numText.innerHTML = `<h1>Attempt remaining : ${10 - guesses}</h1>`;
   inputField.value = ""
-  pastGuesses.innerHTML += `${guess} `
+  pastGuesses.innerHTML += `${guess}, `;
 }
 
 function checkGuess(guess) {
@@ -50,5 +50,11 @@ function checkGuess(guess) {
 }
 
 function endMessage(message) {
-  lowHi.innerHTML = `<h1>${message}</h1>`
+  lowHi.innerHTML = `<h1>${message}</h1>`;
+}
+
+function gameOver(){
+  inputField.setAttribute("disabled", "");
+  button.setAttribute("disabled", "");
+  
 }
