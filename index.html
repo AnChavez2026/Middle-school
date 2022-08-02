@@ -31,10 +31,21 @@
         <input id="guess" class="input is-link is-medium" type="text" name="number" placeholder="Make a guess" />
         <p id="lowHi"></p>
         <div class="mt-4">
-          <button id="button" class="button is-medium">
-            Submit
-          </button>
+          <div style="float:left">
+            <button id="button" class="button is-medium">
+              Submit
+            </button>
+          </div>
+          <section id="unhide" class="section hidden">
+            <div style="float:right">
+              <button id="button2" class="button is-medium">
+                Start Over
+              </button>
+            </div>
+          </section>
+
         </div>
+
       </section>
   </div>
 
@@ -50,11 +61,19 @@
     </section>
   </div>
 
+  <section id="" class="section hidden">
+    <div id="imageholder">
+      <img src="https://media.giphy.com/media/YqHMVSYXIMEiA/giphy.gif" alt="gif" />
+    </div>
+  </section>
 
-  <!-- needs work -->
-  <footer class="footer">
+
+
+  <footer class="footer has-background-link">
     <div class="content has-text-centered">
-      <img src = "https://cdn.glitch.com/89fb5b85-4c20-461c-abe1-c7f1bd17c13c%2FPoweredby_100px-White_VertText.png?v=1619531592690" alt = "Powered by Giphy"/>
+      <img
+        src="https://cdn.glitch.com/89fb5b85-4c20-461c-abe1-c7f1bd17c13c%2FPoweredby_100px-White_VertText.png?v=1619531592690"
+        alt="Powered by Giphy" />
     </div>
   </footer>
   <script src="script.js"></script>

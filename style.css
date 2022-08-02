@@ -3,13 +3,9 @@ html, body {
   width: 100%;
 }
 
-/* memes */
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
 
 body {background-color: white;}
 
-footer {
-  background-color: blue;
-}
