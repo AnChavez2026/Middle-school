@@ -32,10 +32,20 @@ function nancheck(guess) {
   } else {
     checkGuess(guess)
     showGuess(guess)
+    if (guesses === 5) {
+      document.body.style.background = "#72ade3";
+    }
+    if (guesses === 8) {
+      document.body.style.background = "#ffef85";
+    }
+    if (guesses === 9) {
+      document.body.style.background = "orange";
+    }
     if (guesses === 10) {
       endMessage(`Game Over! The number was ${randomNumber}`)
       checkGuess(guess)
       gameOver()
+      document.body.style.background = "#f85959";
     }
   }
 }
@@ -50,7 +60,7 @@ function showGuess(guess) {
 
 function checkGuess(guess) {
   if (guess === randomNumber) {
-    endMessage("Correct! You Win")
+    endMessage(`Correct! You Win, the number was ${randomNumber}`)
     gameOver()
     win = true;
   } else if (guess < randomNumber) {
@@ -78,9 +88,16 @@ function gameOver() {
     guesses = 0
     pastGuesses.innerHTML = ""
     numText.innerHTML = `<h1>Attempt remaining : 10</h1>`;
+    document.getElementById("gif").classList.add("hidden");
+    randomNumber = getRandomInt(100);
+    console.log("new num", randomNumber)
+    document.body.style.background = "white"
+    unhide.classList.add("section")
+    unhide.classList.add("hidden")
+
   })
 }
-
+// checks if the users has won and if guesses = 10, shows gifs for a win and lost 
 async function winCheck() {
   if (win == false && guesses == 10) {
     const response = await fetch(lURL);
@@ -88,6 +105,7 @@ async function winCheck() {
     let i = getRandomInt(25);
     const gifURL = json.data[i].images.downsized.url;
     console.log(gifURL);
+    document.getElementById("gif").classList.remove("hidden");
     imageHolderDiv.innerHTML = `<img src = ${gifURL}/>`
   }
   else if (win == true) {
@@ -96,6 +114,7 @@ async function winCheck() {
     let i = getRandomInt(25);
     const gifURL = json.data[i].images.downsized.url;
     console.log(gifURL);
+    document.getElementById("gif").classList.remove("hidden");
     imageHolderDiv.innerHTML = `<img src = ${gifURL}/>`;
   }
 }

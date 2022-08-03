@@ -8,4 +8,12 @@ html, body {
 }
 
 body {background-color: white;}
+.sky{
+  background-color:  #e55252;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
 
