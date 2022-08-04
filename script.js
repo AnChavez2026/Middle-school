@@ -11,11 +11,12 @@ const pastGuesses = document.querySelector("#attempt")
 const newGameButton = document.querySelector("#button2");
 const unhide = document.querySelector("#unhide");
 const imageHolderDiv = document.querySelector("#imageholder");
+const up = document.querySelector("#color")
+const bottom = document.querySelector("#color2")
 let guesses = 0;
 let winURL = "https://api.giphy.com/v1/gifs/search?api_key=N1Q0iOh5AufGTWWzFtw1awPYg21xiZRp&q=winner&limit=25&offset=0&rating=g&lang=en";
 let lURL = "https://api.giphy.com/v1/gifs/search?api_key=N1Q0iOh5AufGTWWzFtw1awPYg21xiZRp&q=loser&limit=25&offset=0&rating=g&lang=en";
 let win = false;
-
 submit.addEventListener("click", function(e) {
   const guess = parseInt(inputField.value);
   nancheck(guess);
@@ -32,20 +33,35 @@ function nancheck(guess) {
   } else {
     checkGuess(guess)
     showGuess(guess)
-    if (guesses === 5) {
-      document.body.style.background = "#72ade3";
-    }
+    // if (guesses === 5) {
+    //   //document.body.style.background = "#72ade3";
+    //   up.classList.remove("is-link")
+    //   up.classList.add("is-warning")
+    //   bottom.classList.remove("has-background-link")
+    //   bottom.classList.add("has-background-warning")
+    // } 
     if (guesses === 8) {
-      document.body.style.background = "#ffef85";
+      //document.body.style.background = "#ffef85";
+      up.classList.remove("is-link")
+      up.classList.add("is-primary")
+      bottom.classList.remove("has-background-link")
+      bottom.classList.add("has-background-primary")
     }
     if (guesses === 9) {
-      document.body.style.background = "orange";
+      //document.body.style.background = "orange";
+      up.classList.remove("is-primary")
+      up.classList.add("is-warning")
+      bottom.classList.remove("has-background-primary")
+      bottom.classList.add("has-background-warning")
     }
     if (guesses === 10) {
       endMessage(`Game Over! The number was ${randomNumber}`)
       checkGuess(guess)
       gameOver()
-      document.body.style.background = "#f85959";
+      up.classList.remove("is-warning")
+      up.classList.add("is-danger")
+      bottom.classList.remove("has-background-warning")
+      bottom.classList.add("has-background-danger")
     }
   }
 }
@@ -90,11 +106,15 @@ function gameOver() {
     numText.innerHTML = `<h1>Attempt remaining : 10</h1>`;
     document.getElementById("gif").classList.add("hidden");
     randomNumber = getRandomInt(100);
-    console.log("new num", randomNumber)
-    document.body.style.background = "white"
     unhide.classList.add("section")
     unhide.classList.add("hidden")
-
+    console.log("new num", randomNumber)
+    document.body.style.background = "white"
+    up.classList.remove("is-danger")
+    up.classList.add("is-link")
+    bottom.classList.remove("has-background-danger")
+    bottom.classList.add("has-background-link")
+    win = false; 
   })
 }
 // checks if the users has won and if guesses = 10, shows gifs for a win and lost 
@@ -104,17 +124,15 @@ async function winCheck() {
     const json = await response.json();
     let i = getRandomInt(25);
     const gifURL = json.data[i].images.downsized.url;
-    console.log(gifURL);
     document.getElementById("gif").classList.remove("hidden");
-    imageHolderDiv.innerHTML = `<img src = ${gifURL}/>`
+    imageHolderDiv.innerHTML = `<img src = ${gifURL} alt="gif" class = "center"/>`
   }
   else if (win == true) {
     const response = await fetch(winURL);
     const json = await response.json();
     let i = getRandomInt(25);
     const gifURL = json.data[i].images.downsized.url;
-    console.log(gifURL);
     document.getElementById("gif").classList.remove("hidden");
-    imageHolderDiv.innerHTML = `<img src = ${gifURL}/>`;
+    imageHolderDiv.innerHTML = `<img src = ${gifURL} alt="gif" class = "center"/>`;
   }
 }
